@@ -1,0 +1,22 @@
+{
+	"name": "ssigwart/letsencryptdns-cloudflare",
+	"license": "MIT",
+	"homepage": "https://github.com/ssigwart/letsencrypt-cloudflare",
+	"description": "PHP Let's Encrypt Wildcard DNS Client (CloudFlare DNS support)",
+	"keywords": ["acme", "acmev2", "wildcard", "ssl", "letsencrypt", "cloudflare"],
+	"authors": [
+		{
+			"name": "Stephen Sigwart"
+		}
+	],
+	"autoload": {
+		"psr-4": { "ssigwart\\LetsEncryptCloudflareDNSClient\\": "src/" }
+	},
+	"require": {
+		"ssigwart/letsencryptdns": "^1.0.9",
+		"cloudflare/sdk": "^1.0"
+	},
+	"provide": {
+		"LetsEncryptDNSClient\\DNSProviderInterface": "1.0"
+	}
+}
