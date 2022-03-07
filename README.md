@@ -1,4 +1,4 @@
-# PHP LetsEncrypt Wildcard DNS Client for CloudFlare DNS
+# PHP LetsEncrypt Wildcard DNS Client for Cloudflare DNS
 
 This is a Cloudflare DNS implementation for `ssigwart/letsencryptdns`.
 

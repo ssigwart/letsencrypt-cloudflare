@@ -18,7 +18,7 @@ class CloudflareDNSProvider implements DNSProviderInterface
 	/**
 	 * Constructor
 	 *
-	 * @param string $cfApiToken CloudFlare API token
+	 * @param string $cfApiToken Cloudflare API token
 	 * @param string $zoneId Zone ID
 	 */
 	public function __construct(string $cfApiToken, string $zoneId)
