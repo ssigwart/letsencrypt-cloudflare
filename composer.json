@@ -15,8 +15,5 @@
 	"require": {
 		"ssigwart/letsencryptdns": "^1.0.9",
 		"cloudflare/sdk": "^1.0"
-	},
-	"provide": {
-		"LetsEncryptDNSClient\\DNSProviderInterface": "1.0"
 	}
 }
