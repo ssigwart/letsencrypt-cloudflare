@@ -6,3 +6,8 @@ This is a Cloudflare DNS implementation for `ssigwart/letsencryptdns`.
 ```sh
 composer install ssigwart/letsencryptdns-cloudflare
 ```
+
+## Usage
+```php
+$cfDnsProvider = new CloudflareDNSProvider('api_token', 'zone');
+```

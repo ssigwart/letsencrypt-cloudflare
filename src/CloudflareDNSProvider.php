@@ -43,7 +43,7 @@ class CloudflareDNSProvider implements DNSProviderInterface
 	{
 		try
 		{
-			$successful = $this->cloudflareDns->addRecord($this->zoneId, $type, $name, $value, $ttl);
+			$successful = $this->cloudflareDns->addRecord($this->zoneId, $type, $name, $value, $ttl, false);
 			if (!$successful)
 				throw new LetsEncryptDNSClientException('Failed to add DNS record.');
 		} catch (\Cloudflare\API\Adapter\ResponseException $e) {
