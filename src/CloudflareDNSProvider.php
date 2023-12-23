@@ -15,6 +15,9 @@ class CloudflareDNSProvider implements DNSProviderInterface
 	/** Zone ID */
 	private $zoneId = null;
 
+	/** @var bool[] Hash of type|name to true to indicate if cleanup was done */
+	private array $didOldRecordCleanupHash = [];
+
 	/**
 	 * Constructor
 	 *
@@ -43,6 +46,18 @@ class CloudflareDNSProvider implements DNSProviderInterface
 	{
 		try
 		{
+			$hashKey = $type . '|' . $name;
+			if (!isset($this->didOldRecordCleanupHash[$hashKey]))
+			{
+				$this->didOldRecordCleanupHash[$hashKey] = true;
+				$records = $this->cloudflareDns->listRecords($this->zoneId, $type, $name);
+				foreach ($records->result as $dnsRecord)
+				{
+					// Just to be safe, make sure it's an ACME challenge
+					if (preg_match('/^_acme-challenge[.]/', $dnsRecord->name) && $dnsRecord->type === 'TXT')
+						$this->cloudflareDns->deleteRecord($this->zoneId, $dnsRecord->id);
+				}
+			}
 			$successful = $this->cloudflareDns->addRecord($this->zoneId, $type, $name, $value, $ttl, false);
 			if (!$successful)
 				throw new LetsEncryptDNSClientException('Failed to add DNS record.');
